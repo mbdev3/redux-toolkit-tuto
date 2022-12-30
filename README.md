@@ -1,13 +1,5 @@
 # Redux Toolkit
 
-#### React Course
-
-[My React Course](https://www.udemy.com/course/react-tutorial-and-projects-course/?referralCode=FEE6A921AF07E2563CEF)
-
-#### Support
-
-Find the App Useful? [You can always buy me a coffee](https://www.buymeacoffee.com/johnsmilga)
-
 #### Docs
 
 [Redux Toolkit Docs](https://redux-toolkit.js.org/introduction/getting-started)
@@ -310,8 +302,7 @@ const CartContainer = () => {
       className='btn clear-btn'
       onClick={() => {
         dispatch(clearCart());
-      }}
-    >
+      }}>
       clear cart
     </button>
   );
@@ -367,8 +358,7 @@ const cartSlice = createSlice({
   },
 });
 
-export const { clearCart, removeItem, increase, decrease, calculateTotals } =
-  cartSlice.actions;
+export const { clearCart, removeItem, increase, decrease, calculateTotals } = cartSlice.actions;
 
 export default cartSlice.reducer;
 ```
@@ -396,8 +386,7 @@ const CartItem = ({ id, img, title, price, amount }) => {
           className='remove-btn'
           onClick={() => {
             dispatch(removeItem(id));
-          }}
-        >
+          }}>
           remove
         </button>
       </div>
@@ -407,8 +396,7 @@ const CartItem = ({ id, img, title, price, amount }) => {
           className='amount-btn'
           onClick={() => {
             dispatch(increase({ id }));
-          }}
-        >
+          }}>
           <ChevronUp />
         </button>
         {/* amount */}
@@ -422,8 +410,7 @@ const CartItem = ({ id, img, title, price, amount }) => {
               return;
             }
             dispatch(decrease({ id }));
-          }}
-        >
+          }}>
           <ChevronDown />
         </button>
       </div>
@@ -551,8 +538,7 @@ return (
     className='btn clear-btn'
     onClick={() => {
       dispatch(openModal());
-    }}
-  >
+    }}>
     clear cart
   </button>
 );
@@ -579,8 +565,7 @@ const Modal = () => {
             onClick={() => {
               dispatch(clearCart());
               dispatch(closeModal());
-            }}
-          >
+            }}>
             confirm
           </button>
           <button
@@ -588,8 +573,7 @@ const Modal = () => {
             className='btn clear-btn'
             onClick={() => {
               dispatch(closeModal());
-            }}
-          >
+            }}>
             cancel
           </button>
         </div>
@@ -681,22 +665,19 @@ npm install axios
 - cartSlice.js
 
 ```js
-export const getCartItems = createAsyncThunk(
-  'cart/getCartItems',
-  async (name, thunkAPI) => {
-    try {
-      // console.log(name);
-      // console.log(thunkAPI);
-      // console.log(thunkAPI.getState());
-      // thunkAPI.dispatch(openModal());
-      const resp = await axios(url);
+export const getCartItems = createAsyncThunk('cart/getCartItems', async (name, thunkAPI) => {
+  try {
+    // console.log(name);
+    // console.log(thunkAPI);
+    // console.log(thunkAPI.getState());
+    // thunkAPI.dispatch(openModal());
+    const resp = await axios(url);
 
-      return resp.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue('something went wrong');
-    }
+    return resp.data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue('something went wrong');
   }
-);
+});
 ```
 
 #### The extraReducers "builder callback" notation
